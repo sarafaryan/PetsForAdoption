@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/optionsFragment">
+
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.RNA_RECORDS.petsforadoption.Options.OptionsFragment"
+        android:label="Pet Adoption">
+        <action
+            android:id="@+id/action_optionsFragment_to_adoptAPetFragment"
+            app:destination="@id/adoptAPetFragment" />
+        <action
+            android:id="@+id/action_optionsFragment_to_chooseLocation"
+            app:destination="@id/chooseLocation" />
+    </fragment>
+    <fragment
+        android:id="@+id/adoptAPetFragment"
+        android:name="com.RNA_RECORDS.petsforadoption.AdoptAPet.AdoptAPetFragment"
+        android:label="Pet Adoption"
+        tools:layout="@layout/fragment_adopt_a_pet">
+        <action
+            android:id="@+id/action_adoptAPetFragment_to_mapMarkerClicked"
+            app:destination="@id/mapMarkerClicked" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLocation"
+        android:name="com.RNA_RECORDS.petsforadoption.GiveForAdoption.ChooseLocation"
+        android:label="Pet Adoption">
+        <action
+            android:id="@+id/action_chooseLocation_to_formForAdoptionFrag"
+            app:destination="@id/formForAdoptionFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/formForAdoptionFrag"
+        android:name="com.RNA_RECORDS.petsforadoption.GiveForAdoption.FormForAdoptionFrag"
+        android:label="Pet Adoption">
+        <argument
+            android:name="coordinates"
+            app:argType="com.google.android.gms.maps.model.LatLng" />
+        <action
+            android:id="@+id/action_formForAdoptionFrag_to_optionsFragment"
+            app:destination="@id/optionsFragment"
+            app:popUpTo="@id/optionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapMarkerClicked"
+        android:name="com.RNA_RECORDS.petsforadoption.MapMarkerClicked"
+        android:label="Pet Adoption">
+        <argument
+            android:name="postOfMarkerClicked"
+            app:argType="com.RNA_RECORDS.petsforadoption.Utils.Post" />
+        <action
+            android:id="@+id/action_mapMarkerClicked_to_optionsFragment"
+            app:destination="@id/optionsFragment"
+            app:popUpTo="@id/optionsFragment" />
+    </fragment>
+</navigation>
